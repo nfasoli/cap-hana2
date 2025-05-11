@@ -1,25 +1,65 @@
-# Getting Started
+## Test per fare deploy dei modelli db in locale creando un HDI container manualmente
 
-Welcome to your new project.
+- xs create-service hana hdi-shared &lt;nome istanza&gt;
+- xs create-service-key &lt;nome istanza&gt; &lt;nome chiave&gt;
+- xs service-key &lt;nome istanza&gt; &lt;nome chiave&gt;
 
-It contains these folders and files, following our recommended project layout:
+prendere il contenuto e fare paste in default-env.json all’interno di db
 
-File or Folder | Purpose
----------|----------
-`app/` | content for UI frontends goes here
-`db/` | your domain models and data go here
-`srv/` | your service models and code go here
-`package.json` | project metadata and configuration
-`readme.md` | this getting started guide
+{
 
+"TARGET_CONTAINER" : "target-service",
 
-## Next Steps
+"VCAP_SERVICES" : {
 
-- Open a new terminal and run `cds watch`
-- (in VS Code simply choose _**Terminal** > Run Task > cds watch_)
-- Start adding content, for example, a [db/schema.cds](db/schema.cds).
+"hana" : \[ {
 
+"name" : "target-service",
 
-## Learn More
+"label" : "hana",
 
-Learn more at https://cap.cloud.sap/docs/get-started/.
+"tags" : \[ "hana", "database", "relational" \],
+
+"plan" : "hdi-shared",
+
+"credentials" : {
+
+"schema" : "SCHEMA",
+
+"hdi_user" : "USER_DT",
+
+"hdi_password" : "PASSWORD_DT",
+
+"certificate" : "-----BEGIN CERTIFICATE-----\\nABCD...1234\\n-----END CERTIFICATE-----\\n",
+
+"host" : "host",
+
+"port" : "30015"
+
+}
+
+} \]
+
+}
+
+}
+
+Ora se faccio npm install da dentro la cartella db e poi npm run start -- --exit ho il build ed il deploy degli artifatti sul container appena creato (leggasi target-service)
+
+Andiamo oltre ora
+
+La prima parte mi serve se voglio fare il deploy solo del db, ma voglio andare oltre, voglio fare tutto il ciclo
+
+- build
+- deploy
+- run
+
+Sul deploy: [Deploying Models](https://learning.sap.com/learning-journeys/develop-data-models-with-sap-hana-cloud/deploying-models_d1159ed0-e5f4-492a-bf86-59e2314eae2f) oppure la documentazione di hdi-deploy su npm
+
+Per esempio, DEBUG=all cds build e così via
+
+Per esempio, dobbiamo creare una hdbview per accedere a campi case sensitive: [Using Native SAP HANA Artifacts | capire](https://cap.cloud.sap/docs/advanced/hana)
+
+Interessante anche il discorso dei facade, da approfondire: [The cds Façade Object | capire](https://cap.cloud.sap/docs/node.js/cds-facade)
+
+Inoltre per customizzare gli eventi guardare qui: [Core Services | capire](https://cap.cloud.sap/docs/node.js/core-services#srv-on-before-after)
