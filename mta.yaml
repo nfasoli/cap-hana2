@@ -1,0 +1,57 @@
+_schema-version: "3.1"
+ID: cap_prj
+version: 1.1.0
+modules:
+  - name: cap-srv
+    type: nodejs
+    path: srv
+    provides:
+      - name: srv_api
+        properties:
+          url: ${default-url}
+    requires:
+      - name: cap2-hana
+      - name: cap-db 
+    parameters:
+      port: 52100        
+  - name: cap-db
+    type: hdb
+    path: db
+    requires:
+      - name: cap2-hana
+        group: core-xsjs-backend
+        properties:
+          TARGET_CONTAINER: '~{hdi-container-name}'
+          key: ServiceName_1
+          service: '~{hdi-container-name}'
+
+      - name: SBODEMO_METAL_240212_CAP
+        group: core-xsjs-backend
+        properties:
+          key: ServiceName_1
+          service: '~{metal-service-name}'
+
+      - name: cross-container-service-2
+#        group: core-xsjs-backend
+        group: SERVICE_REPLACEMENTS
+        properties:
+          key: ServiceName_1
+          service: '~{cc-service-name}'
+          
+resources:
+  - name: cap2-hana
+    type: com.sap.xs.hdi-container
+    properties:
+      hdi-container-name: ${service-name}
+
+  - name: SBODEMO_METAL_240212_CAP
+    type: org.cloudfoundry.existing-service
+    properties:
+      metal-service-name: '${service-name}'
+
+  - name: cross-container-service-2
+    type: org.cloudfoundry.existing-service
+    parameters:
+      service-name: SBODEMO_METAL_240212_CAP
+    properties:
+      cc-service-name: '${service-name}'

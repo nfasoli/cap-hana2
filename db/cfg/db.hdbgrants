@@ -1,0 +1,28 @@
+{
+   "ServiceName_1":{
+      "object_owner":{
+         "schema_privileges":[
+            {
+               "reference":"SBODEMO_METAL_240212",
+               "privileges_with_grant_option":[
+                  "SELECT",
+                  "SELECT METADATA",
+                  "EXECUTE"
+               ]
+            }
+         ]
+      },
+      "application_user":{
+         "schema_privileges":[
+            {
+               "reference":"SBODEMO_METAL_240212",
+               "privileges_with_grant_option":[
+                  "SELECT",
+                  "SELECT METADATA",
+                  "EXECUTE"
+               ]
+            }
+         ]
+      }
+   }
+}

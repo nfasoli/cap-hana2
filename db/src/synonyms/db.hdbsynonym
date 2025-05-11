@@ -1,0 +1,9 @@
+{
+  "OITM": {
+    "target": {
+      "object": "OITM",
+      "schema": "SBODEMO_METAL_240212",
+      "database": "HDX"
+    }
+  }
+}

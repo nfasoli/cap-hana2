@@ -1,0 +1,11 @@
+{
+    "name": "deploy",
+    "dependencies": {
+      "@sap/hdi-deploy": "^5",
+      "@sap/hana-client": "^2"
+    },
+    "scripts": {
+      "postinstall": "node .build.js",
+      "start": "node node_modules/@sap/hdi-deploy/deploy.js  --auto-undeploy"
+    }
+  }

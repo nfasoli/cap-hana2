@@ -1,0 +1,5 @@
+-- Si chiama mapping view e serve solo ed esclusivamente per gestire la case sensitiveness di hana
+VIEW OITM_MAPPED AS SELECT
+  OITM."ItemCode" as ItemCode,
+  OITM."ItemName" as ItemName
+FROM OITM
