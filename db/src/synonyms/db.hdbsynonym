@@ -5,5 +5,47 @@
       "schema": "SBODEMO_METAL_240212",
       "database": "HDX"
     }
-  }
+  },
+  "METAL_MES_PRD_FULL_LIST": {
+    "target": {
+      "object": "METAL_MES_PRD_FULL_LIST",
+      "schema": "SBODEMO_METAL_240212",
+      "database": "HDX"
+    }
+  },
+  "METAL_MES_PRD_LIST": {
+    "target": {
+      "object": "METAL_MES_PRD_LIST",
+      "schema": "SBODEMO_METAL_240212",
+      "database": "HDX"
+    }
+  },
+  "METAL_MES_PRD_LIST_DAPRODURRE": {
+    "target": {
+      "object": "METAL_MES_PRD_LIST_DAPRODURRE",
+      "schema": "SBODEMO_METAL_240212",
+      "database": "HDX"
+    }
+  },
+  "METAL_MES_PRD_LIST_PRODOTTE": {
+    "target": {
+      "object": "METAL_MES_PRD_LIST_PRODOTTE",
+      "schema": "SBODEMO_METAL_240212",
+      "database": "HDX"
+    }
+  },
+  "METAL_MES_PRD_LIST_TODAY": {
+    "target": {
+      "object": "METAL_MES_PRD_LIST_TODAY",
+      "schema": "SBODEMO_METAL_240212",
+      "database": "HDX"
+    }
+  },
+  "METAL_MES_READ_ANIME": {
+    "target": {
+      "object": "METAL_MES_READ_ANIME",
+      "schema": "SBODEMO_METAL_240212",
+      "database": "HDX"
+    }
+  }  
 }

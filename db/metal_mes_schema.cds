@@ -1,0 +1,200 @@
+namespace metal.mes;
+
+type READ_ANIME_MAPPED {
+    CodiceAnima         : String;
+    DescrizioneAnima    : String;
+    Quantità            : Decimal;
+    NumerofigureModello : Integer;
+    PesoUnitarioAnima   : Decimal;
+    NumeroAnimePerGetto : Integer;
+    NumeroGettiPerAnima : Integer;
+    NumeroAnimeTotale   : Integer;
+
+}
+
+@cds.persistence.exists
+//@cds.persistence.name : 'METAL_MES_PRD_FULL_LIST_MAPPED' // nome DB ESATTO della view
+entity PRD_FULL_LIST_MAPPED {
+        s_Modello         : String;
+        s_Cliente         : String;
+        s_Lega            : String;
+        n_Temp            : Integer;
+        s_Commessa        : String;
+    key Code              : String;
+    key LineId            : Integer;
+    key LineId_1          : Integer;
+        n_Anime           : Decimal;
+        n_Mod_Pla         : String;
+        n_PesoTotale      : Decimal;
+        s_Cod_Pla         : String;
+        s_Posizione       : String;
+        n_Num_Pla         : String;
+        n_Prodotte        : Integer;
+        n_Bianche         : Integer;
+        n_Tutte           : Integer;
+        s_InProduzione    : String;
+        n_P_Totale        : Decimal;
+        n_Seq             : Integer;
+        s_Note            : String;
+        dt_DataProduzione : Timestamp;
+        dt_Inizio         : Timestamp;
+        dt_Fine           : Timestamp;
+        dt_InizioOra      : String;
+        dt_FineOra        : String;
+}
+
+@cds.persistence.exists
+entity PRD_LIST_MAPPED {
+        s_Modello          : String;
+        s_Cliente          : String;
+        s_Lega             : String;
+        n_Temp             : Integer;
+        s_Commessa         : String;
+    key Code               : String;
+    key LineId             : Integer;
+        U_Impianto         : Integer;
+        n_Quantita         : Decimal;
+        n_Mod_Pla          : String;
+        n_PesoTotale       : Decimal;
+        s_Cod_Pla          : String;
+        s_Posizione        : String;
+        n_Num_Pla          : String;
+        n_Prodotte         : Integer;
+        n_Bianche          : Integer;
+        n_Tutte            : Integer;
+        s_InProduzione     : String;
+        n_P_Totale         : Decimal;
+        n_Seq              : Integer;
+        s_Note             : String;
+        dt_DataProduzione  : Timestamp;
+        dt_Inizio          : Timestamp;
+        dt_Fine            : Timestamp;
+        dt_InizioOra       : String;
+        dt_FineOra         : String;
+        inizio_produzione  : Timestamp;
+        inizio_sospensione : Timestamp;
+        peso_medio         : Decimal;
+        tempo_produzione   : Decimal;
+        tempo_manodopera   : Decimal;
+        tempo_attrezzaggio : Decimal;
+        pezzi_prodotti     : Decimal;
+        chiuso             : String;
+}
+
+@cds.persistence.exists
+entity PRD_LIST_DAPRODURRE_MAPPED {
+        s_Modello          : String;
+        s_Cliente          : String;
+        s_Lega             : String;
+        n_Temp             : Integer;
+        s_Commessa         : String;
+    key Code               : String;
+    key LineId             : Integer;
+        U_Impianto         : Integer;
+        n_Anime            : Decimal;
+        n_Mod_Pla          : String;
+        n_PesoTotale       : Decimal;
+        s_Cod_Pla          : String;
+        s_Posizione        : String;
+        n_Num_Pla          : String;
+        n_Prodotte         : Integer;
+        n_Bianche          : Integer;
+        n_Tutte            : Integer;
+        s_InProduzione     : String;
+        n_P_Totale         : Decimal;
+        n_Seq              : Integer;
+        s_Note             : String;
+        dt_DataProduzione  : Timestamp;
+        dt_Inizio          : Timestamp;
+        dt_Fine            : Timestamp;
+        dt_InizioOra       : String;
+        dt_FineOra         : String;
+        inizio_produzione  : Timestamp;
+        inizio_sospensione : Timestamp;
+        peso_medio         : Decimal;
+        tempo_produzione   : Decimal;
+        tempo_manodopera   : Decimal;
+        tempo_attrezzaggio : Decimal;
+        pezzi_prodotti     : Decimal;
+        chiuso             : String;
+}
+
+@cds.persistence.exists
+entity PRD_LIST_PRODOTTE_MAPPED {
+        s_Modello          : String;
+        s_Cliente          : String;
+        s_Lega             : String;
+        n_Temp             : Integer;
+        s_Commessa         : String;
+    key Code               : String;
+    key LineId             : Integer;
+        U_Impianto         : Integer;
+        n_Anime            : Decimal;
+        n_Mod_Pla          : String;
+        n_PesoTotale       : Decimal;
+        s_Cod_Pla          : String;
+        s_Posizione        : String;
+        n_Num_Pla          : String;
+        n_Prodotte         : Integer;
+        n_Bianche          : Integer;
+        n_Tutte            : Integer;
+        s_InProduzione     : String;
+        n_P_Totale         : Decimal;
+        n_Seq              : Integer;
+        s_Note             : String;
+        dt_DataProduzione  : Timestamp;
+        dt_Inizio          : Timestamp;
+        dt_Fine            : Timestamp;
+        dt_InizioOra       : String;
+        dt_FineOra         : String;
+        inizio_produzione  : Timestamp;
+        inizio_sospensione : Timestamp;
+        peso_medio         : Decimal;
+        tempo_produzione   : Decimal;
+        tempo_manodopera   : Decimal;
+        tempo_attrezzaggio : Decimal;
+        pezzi_prodotti     : Decimal;
+        chiuso             : String;
+}
+
+@cds.persistence.exists
+entity PRD_LIST_TODAY_MAPPED {
+        s_Modello          : String;
+        s_Cliente          : String;
+        s_Lega             : String;
+        n_Temp             : Integer;
+        s_Commessa         : String;
+    key Code               : String;
+    key LineId             : Integer;
+        U_Impianto         : Integer;
+        n_Quantita         : Decimal;
+        n_Mod_Pla          : String;
+        n_PesoTotale       : Decimal;
+        s_Cod_Pla          : String;
+        s_Posizione        : String;
+        n_Num_Pla          : String;
+        n_Prodotte         : Integer;
+        n_Bianche          : Integer;
+        n_Tutte            : Integer;
+        s_InProduzione     : String;
+        n_P_Totale         : Decimal;
+        n_Seq              : Integer;
+        s_Note             : String;
+        dt_DataProduzione  : Timestamp;
+        dt_Inizio          : Timestamp;
+        dt_Fine            : Timestamp;
+        dt_InizioOra       : String;
+        dt_FineOra         : String;
+        inizio_produzione  : Timestamp;
+        inizio_sospensione : Timestamp;
+        peso_medio         : Decimal;
+        tempo_produzione   : Decimal;
+        tempo_manodopera   : Decimal;
+        tempo_attrezzaggio : Decimal;
+        pezzi_prodotti     : Decimal;
+        chiuso             : String;
+        op_docnum          : Integer;
+        op_project         : String;
+        lock_oper          : String;
+        d_datasequenza     : Integer;
+}

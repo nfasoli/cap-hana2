@@ -36,3 +36,5 @@ package-lock.json
 
 # @cap-js/cds-typer
 @cds-models
+
+token

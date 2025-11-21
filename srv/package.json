@@ -5,7 +5,6 @@
     "dependencies": {
         "@sap/cds": "^8",
         "express": "^4",
-        "@sap/xssec": "^4",
         "@sap/hana-client": "^2"
     },
     "engines": {
