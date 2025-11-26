@@ -47,5 +47,12 @@
       "schema": "SBODEMO_METAL_240212",
       "database": "HDX"
     }
+  },
+  "METAL_MES_READ": {
+    "target": {
+      "object": "METAL_MES_READ",
+      "schema": "SBODEMO_METAL_240212",
+      "database": "HDX"
+    }
   }  
 }

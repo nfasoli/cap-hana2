@@ -6,6 +6,11 @@ service METAL_MES {
     @readonly
     action s_readAnime(code: Integer, lineId: Integer) returns many mm.READ_ANIME_MAPPED;
 
+    // Tentativo di aggangiarsi ad una store tramite GET
+    // GET /odata/v4/metal-mes/READ?$filter=code eq 1 and lineId eq 1
+    @readonly
+    entity READ                  as projection on mm.READ;
+
     @readonly
     entity v_PRD_FULL_LIST       as projection on mm.PRD_FULL_LIST_MAPPED;
 

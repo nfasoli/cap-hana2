@@ -12,6 +12,43 @@ type READ_ANIME_MAPPED {
 
 }
 
+
+@cds.persistence.skip
+entity READ {
+    Modello        : String;
+    Project        : String;
+    ItemCode       : String;
+    DocNum         : Integer;
+    Status         : String;
+    U_DocEntryOP   : Integer;
+    U_Sequenza     : Integer;
+    d_datasequenza : DateTime;
+    key Code           : Integer;
+    key LineId         : Integer;
+    U_Impianto     : String;
+    s_InProduzione : String;
+    chiuso         : String;
+    lock_oper      : String;
+    U_DescMod      : String;
+    U_CardName     : String;
+    U_METAL_Fase   : String;
+    Name           : String;
+    U_FlgColata    : String;
+    U_FlagIE       : String;
+    n_P_Totale     : Integer;
+    U_PesMed       : Integer;
+    Lega           : String;
+    n_Mod_Pla      : Integer;
+    U_DataIni      : DateTime;
+    U_DataFin      : DateTime;
+    n_Prodotte     : Decimal;
+    U_Quantita     : Integer;
+    OLV0_CODE      : Integer;
+    OLV0LINEID     : Integer;
+    Marchio        : String;
+    UUID           : String;
+}
+
 @cds.persistence.exists
 //@cds.persistence.name : 'METAL_MES_PRD_FULL_LIST_MAPPED' // nome DB ESATTO della view
 entity PRD_FULL_LIST_MAPPED {
