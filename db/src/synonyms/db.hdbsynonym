@@ -54,5 +54,40 @@
       "schema": "SBODEMO_METAL_240212",
       "database": "HDX"
     }
-  }  
-}
+  },  
+  "OUSR": {
+    "target": {
+      "object": "OUSR",
+      "schema": "SBODEMO_METAL_240212",
+      "database": "HDX"
+    }
+  },  
+  "@METAL_OMOD": {
+    "target": {
+      "object": "@METAL_OMOD",
+      "schema": "SBODEMO_METAL_240212",
+      "database": "HDX"
+    }
+  }  ,
+  "@METAL_OIMP": {
+    "target": {
+      "object": "@METAL_OIMP",
+      "schema": "SBODEMO_METAL_240212",
+      "database": "HDX"
+    }
+  }  ,
+    "@METAL_OFAS": {
+    "target": {
+      "object": "@METAL_OFAS",
+      "schema": "SBODEMO_METAL_240212",
+      "database": "HDX"
+    }
+  },
+    "CUFD": {
+    "target": {
+      "object": "CUFD",
+      "schema": "SBODEMO_METAL_240212",
+      "database": "HDX"
+    }
+  }
+  }

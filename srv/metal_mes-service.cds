@@ -3,8 +3,48 @@ using {metal.mes as mm} from '../db/metal_mes_schema';
 
 service METAL_MES {
 
+    @cds.persistence.skip
+    entity OIMP {
+        key Code        : String;
+            Name        : String;
+            DocEntry    : Integer;
+            Canceled    : String;
+            Object      : String;
+            LogInst     : Integer;
+            UserSign    : Integer;
+            Transfered  : String;
+            CreateDate  : Timestamp;
+            CreateTime  : Integer;
+            UpdateDate  : Timestamp;
+            UpdateTime  : Integer;
+            DataSource  : String;
+            U_CosImp    : Decimal(15, 6);
+            U_CapacPrd  : Decimal(15, 6);
+            U_CodFasLa  : String;
+            U_CodArtIm  : String;
+            U_TempStam  : Decimal(15, 6);
+            U_TempAttr  : Decimal(15, 6);
+            U_ArtTmpImp : String;
+            U_QTA_AMM   : Decimal(15, 6);
+            U_COD_STAB  : String;
+            NameFase    : String;
+            U_FlgColata : String;
+    }
+
+    type Impianto {
+        default : String;
+        OIMP    : Association to many OIMP
+                      on OIMP.Code = $self.default;
+    }
+
     @readonly
     action s_readAnime(code: Integer, lineId: Integer) returns many mm.READ_ANIME_MAPPED;
+
+    @readonly
+    action s_impianto(user: String)                    returns Impianto;
+
+    @readonly
+    action s_tabella(impianto: String)                 returns many mm.Produzione;
 
     // Tentativo di aggangiarsi ad una store tramite GET
     // GET /odata/v4/metal-mes/READ?$filter=code eq 1 and lineId eq 1

@@ -12,6 +12,50 @@ type READ_ANIME_MAPPED {
 
 }
 
+type Produzione {
+    s_Modello          : String;
+    s_Cliente          : String;
+    s_Lega             : String;
+    n_Temp             : Integer;
+    s_Commessa         : String;
+    Code               : String;
+    LineId             : Integer;
+    U_Impianto         : String;
+    n_Quantita         : Decimal(15,6);
+    n_Mod_Pla          : Integer;
+    n_PesoTotale       : Decimal(15,6);
+    s_Cod_Pla          : String;
+    s_Posizione        : String;
+    n_Num_Pla          : Integer;
+    n_Prodotte         : Integer;
+    n_Bianche          : Integer;
+    n_Tutte            : Integer;
+    s_InProduzione     : String;
+    n_P_Totale         : Decimal(15,2);
+    n_Seq              : Integer;
+    s_Note             : String;
+    dt_DataProduzione  : Timestamp;
+    dt_Inizio          : Timestamp;
+    dt_Fine            : Timestamp;
+    dt_InizioOra       : Time;
+    dt_FineOra         : Time;
+    inizio_produzione  : Timestamp;
+    inizio_sospensione : Timestamp;
+    peso_medio         : Decimal(15,6);
+    tempo_produzione   : Decimal(15,6);
+    tempo_manodopera   : Decimal(15,6);
+    tempo_attrezzaggio : Decimal(15,6);
+    pezzi_prodotti     : Decimal(15,6);
+    chiuso             : String;
+    op_docnum          : Integer;
+    op_project         : String;
+    lock_oper          : String;
+    d_datasequenza     : Integer;
+    U_NAME             : String;
+    U_ItemCode         : String;
+    U_ECA_MARCHIO      : String;
+}
+
 
 @cds.persistence.skip
 entity READ {

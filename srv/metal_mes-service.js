@@ -6,12 +6,12 @@ log("metal.mes superinit")
 
 module.exports = cds.service.impl(async function () {
 
-  
-    // Helper per estrarre valori dal filtro
-    function extractValue(where, field) {
-        const idx = where.findIndex(e => e.ref && e.ref[0] === field);
-        return idx >= 0 ? where[idx + 2]?.val : null;
-    }
+
+  // Helper per estrarre valori dal filtro
+  function extractValue(where, field) {
+    const idx = where.findIndex(e => e.ref && e.ref[0] === field);
+    return idx >= 0 ? where[idx + 2]?.val : null;
+  }
 
 
   //const db = cds.db; // oppure: 
@@ -69,8 +69,53 @@ module.exports = cds.service.impl(async function () {
     }));
   });
 
+  this.on('s_tabella', async req => {
+    const { impianto } = req.data;
+    log("impianto: " + impianto)
+
+    if (!impianto) {
+      req.reject(400, 'Parametro impianto obbligatorio');
+    }
+
+    const tsql = `SELECT "AliasID" FROM ${CURRENT_SCHEMA}.CUFD WHERE "TableID" = 'OITM' AND "AliasID" = 'ECA_MARCHIO'`;
+    const trows = await db.run(tsql);
+
+    const sql1 = `SELECT T1.*, T2."U_NAME", T3."U_ItemCode", T4."U_ECA_MARCHIO" FROM "${CURRENT_SCHEMA}"."METAL_MES_PRD_LIST_TODAY" T1 LEFT OUTER JOIN "${CURRENT_SCHEMA}"."OUSR" T2 ON T1."lock_oper" = T2."USER_CODE" INNER JOIN "${CURRENT_SCHEMA}"."@METAL_OMOD" T3 ON T3."U_ModCode" = T1."s_Modello" INNER JOIN "${CURRENT_SCHEMA}"."OITM" T4 ON T4."ItemCode" = T3."U_ItemCode" where "U_Impianto" = ? `;
+    const sql2 = `SELECT T1.*, T2."U_NAME", T3."U_ItemCode", ' ' U_ECA_MARCHIO FROM "${CURRENT_SCHEMA}"."METAL_MES_PRD_LIST_TODAY" T1 LEFT OUTER JOIN "${CURRENT_SCHEMA}"."OUSR" T2 ON T1."lock_oper" = T2."USER_CODE" INNER JOIN "${CURRENT_SCHEMA}"."@METAL_OMOD" T3 ON T3."U_ModCode" = T1."s_Modello" INNER JOIN "${CURRENT_SCHEMA}"."OITM" T4 ON T4."ItemCode" = T3."U_ItemCode" where "U_Impianto" = ? `;
+
+    let sql = ``;
+    if (trows.length == 0)
+      sql = sql2;
+    else
+      sql = sql1;
+    let rs = await db.run(sql, [impianto]);
+    const rows = Array.isArray(rs) ? rs : (rs?.resultSet || []);
+    return rows;
+
+  });
+
+  this.on('s_impianto', async req => {
+    const { user } = req.data;
+    if (!user) {
+      req.reject(400, 'Parametro user obbligatorio nel filtro');
+    }
+
+
+    const sql = `select OIMP.*, OFAS."Name" "NameFase", OFAS."U_FlgColata" from "${CURRENT_SCHEMA}"."@METAL_OIMP" OIMP LEFT JOIN "${CURRENT_SCHEMA}"."@METAL_OFAS" OFAS on OIMP."U_CodFasLa" = OFAS."Code"`;
+    const sql_ousr = `select U_METAL_MES_PRED_IMPIANTO from "${CURRENT_SCHEMA}"."OUSR" where USER_CODE=?`;
+
+    let rows = await db.run(sql, []);
+    let rows_ousr = await db.run(sql_ousr, [user]);
+
+    console.log(rows)
+    return {
+      default: rows_ousr[0].U_METAL_MES_PRED_IMPIANTO,
+      OIMP: rows
+    };
+  });
 
   this.on('s_readAnime', async req => {
+
     const { code, lineId } = req.data;
     log("code = " + code + ", lineId = " + lineId)
 
@@ -93,3 +138,5 @@ module.exports = cds.service.impl(async function () {
     }));
   });
 });
+
+
